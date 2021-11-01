@@ -6,8 +6,14 @@
 
     public function index(){
         echo "controlador usuario, Accion indice";
-        return $this;
     }
+
+    public function registro(){
+      require_once("./views/usuario/registro.php");
+    }
+
+    public function guardarUsuario(){}
+
   }
 
 ?>
