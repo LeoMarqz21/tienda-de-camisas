@@ -5,7 +5,7 @@
   require_once("./views/layout/header.php");
   require_once("./views/layout/sidebar.php");
 
-  function shoow_error(){
+  function show_error(){
     $error = new errorController();
     $error->index();
   }
@@ -14,15 +14,13 @@
       $nombre_controlador = $_GET['controller'] . 'Controller';
   }else if(!isset($_GET['controller']) && !isset($_GET['action'])){
       $nombre_controlador = controller_default;
-      $controlador = new $nombre_controlador();
   }else{
-    shoow_error();
+    show_error();
     exit();
   }
 
   if(class_exists($nombre_controlador)){
       $controlador = new $nombre_controlador();
-
       if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
           $action = $_GET['action'];
           $controlador->$action();
@@ -30,10 +28,10 @@
         $action = action_default;
         $controlador->$action();
     }else{
-        shoow_error();
+        show_error();
       }
   }else{
-    shoow_error();
+    show_error();
   }
 
   require_once("./views/layout/footer.php");
