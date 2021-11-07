@@ -12,7 +12,11 @@
       require_once("./views/usuario/registro.php");
     }
 
-    public function guardarUsuario(){}
+    public function saved(){
+      if(isset($_POST)){
+        print_r($_POST);
+      }
+    }
 
   }
 
