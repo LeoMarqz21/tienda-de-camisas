@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?=base_url?>assets/css/style.css">
     <link rel="shortcut icon" href="<?=base_url?>assets/images/camiseta.png" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Tienda Master</title>
 </head>
 
