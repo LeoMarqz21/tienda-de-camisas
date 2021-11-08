@@ -20,14 +20,19 @@
         $usuario->setApellidos($_POST['apellidos']);
         $usuario->setEmail($_POST['email']);
         $usuario->setPassword($_POST['password']);
+
         if($usuario->save()){
-          echo "<h1>Usuario Registrado exitosamente!!</h1>";
-          echo "<script>Swal.fire('Bien!!','Usuario registrado exitosamente!!','success')</script>";
+          $_SESSION['register'] = "complete";
         }else{
-          echo "<h1>Usuario no registrado, algo salio mal</h1>";
-          echo "<script>Swal.fire('Error','Algo salio mal, usuario no registado','error')</script>";
+          $_SESSION['register'] = "failed";
         }
+
+      }else{
+        $_SESSION['register'] = "failed";
+        header("Location: " . base_url . "usuario/registro");
       }
+      header("Location: " . base_url . "usuario/registro");
+
     }
 
   }
