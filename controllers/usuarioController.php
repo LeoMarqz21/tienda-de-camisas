@@ -15,21 +15,27 @@
 
     public function saved(){
       if(isset($_POST)){
-        $usuario = new Usuario();
-        $usuario->setNombre($_POST['nombre']);
-        $usuario->setApellidos($_POST['apellidos']);
-        $usuario->setEmail($_POST['email']);
-        $usuario->setPassword($_POST['password']);
+        $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+        $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
+        $email = isset($_POST['email']) ? $_POST['email'] : false;
+        $password = isset($_POST['password']) ? $_POST['password'] : false;
 
-        if($usuario->save()){
-          $_SESSION['register'] = "complete";
+        if($nombre && $apellidos && $email && $password){
+          $usuario = new Usuario();
+          $usuario->setNombre($nombre);
+          $usuario->setApellidos($apellidos);
+          $usuario->setEmail($email);
+          $usuario->setPassword($password);
+  
+          if($usuario->save()){
+            $_SESSION['register'] = "complete";
+          }else{
+            $_SESSION['register'] = "failed";
+          }
+  
         }else{
           $_SESSION['register'] = "failed";
         }
-
-      }else{
-        $_SESSION['register'] = "failed";
-        header("Location: " . base_url . "usuario/registro");
       }
       header("Location: " . base_url . "usuario/registro");
 

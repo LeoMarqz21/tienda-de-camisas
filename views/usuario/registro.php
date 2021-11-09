@@ -1,9 +1,9 @@
 <?php
 
-  if(isset($_SESSION['register']) && $_SESSION['register'] != "null"){
+  if(isset($_SESSION['register']) && $_SESSION['register'] != null){
       if($_SESSION['register'] == "complete") echo "<script>Swal.fire('Bien!!','Usuario registrado exitosamente!!','success')</script>";
       if($_SESSION['register'] == "failed") echo "<script>Swal.fire('Error','Algo salio mal, usuario no registado','error')</script>";
-      $_SESSION['register'] = 'null';
+      Utils::deleteSession('register');
   }
 
 ?>
