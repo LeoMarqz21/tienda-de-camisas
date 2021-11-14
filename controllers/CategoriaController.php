@@ -26,6 +26,14 @@
       header("Location: " . base_url . "categoria/index");
     }
 
+    public function delete(){
+      Utils::isAdmin();
+      if(isset($_POST['id'])){
+        echo "Id categoria: " . $_POST['id'];
+      }
+      header("Location: " . base_url . "categoria/index");
+    }
+
 
   }
 

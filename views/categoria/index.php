@@ -14,6 +14,7 @@
             <th>Nº</th>
             <th>ID</th>
             <th>NOMBRE</th>
+            <th>ACCION</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,12 @@
                 </td>
                 <td style="text-align:center;">
                     <?= $ct->nombre ?>
+                </td>
+                <td>
+                    <form action="<?=base_url?>categoria/delete" method="POST" >
+                      <input type="hidden" name="id" value="<?= $ct->id?>" />
+                      <button type="submit" class="btn-delete"> <i class='bx bxs-tag-x'></i></button> 
+                    </form>
                 </td>
             </tr>
             <?php $c++; ?>
