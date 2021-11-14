@@ -99,6 +99,10 @@
         return $this->password;
       }
 
+      public function getEncryptedPassword(){
+        return password_hash($this->db->real_escape_string($this->password),PASSWORD_BCRYPT, ['cost'=>4]);
+      }
+
       /**
        * Set the value of password
        *
@@ -106,7 +110,7 @@
        */ 
       public function setPassword($password)
       {
-            $this->password = password_hash($this->db->real_escape_string($password),PASSWORD_BCRYPT, ['cost'=>4]);
+            $this->password = $password;
             return $this;
       }
 
@@ -151,13 +155,27 @@
       /* db */
 
       public function save(){
-          $query = "INSERT INTO usuarios (nombre, apellidos, email, password, rol, imagen) VALUES('{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}','{$this->getPassword()}', 'user', 'null')";
+          $query = "INSERT INTO usuarios (nombre, apellidos, email, password, rol, imagen) VALUES('{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}','{$this->getEncryptedPassword()}', 'user', 'null')";
           $resultado = false;
           $save = $this->db->query($query);
           if($save){
             $resultado = true;
           }
           return $resultado;
+      }
+
+      public function login(){
+        $result = false;
+        $query = "SELECT * FROM usuarios WHERE email='{$this->getEmail()}'";
+        $login = $this->db->query($query);
+        if($login && $login->num_rows == 1){
+          $usuario = $login->fetch_object();
+          $verify = password_verify($this->getPassword(), $usuario->password);
+          if($verify){
+            $result = $usuario;
+          }
+        }
+        return $result;
       }
   }
 

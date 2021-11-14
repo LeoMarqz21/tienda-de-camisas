@@ -41,6 +41,35 @@
 
     }
 
-  }
+    public function login(){
+      $result = false;
+      if(isset($_POST)){
+        $usuario = new Usuario();
+        $usuario->setEmail($_POST['email']);
+        $usuario->setPassword($_POST['password']);
+        $login = $usuario->login();
+        if($login && is_object($login)){
+          $result = true;
+          $_SESSION['identity'] = $login;
+          if($login->rol == 'admin'){
+            $_SESSION['admin'] = true;
+          }
+        }
+        header("Location: " . base_url);
+      }
+      return $result;
+    }
+
+    public function logout(){
+      if(isset($_SESSION['identity'])){
+        Utils::deleteSession('identity');
+      }
+      if(isset($_SESSION['admin'])){
+        Utils::deleteSession('admin');
+      }
+      header("Location: " . base_url);
+    }
+
+  } //fin de clase
 
 ?>

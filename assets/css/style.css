@@ -14,15 +14,17 @@ body{
     background: url(../images/bg.png);
 }
 
-a{
+.link{
     color: #01b1ea; 
 }
 
-a:visited{
+
+
+.link:visited{
     color: #01b1ea;
 }
 
-a:hover{
+.link:hover{
     color:#555555;
 }
 
@@ -139,13 +141,12 @@ a:hover{
     color:#222;
     width: 100%;
     text-align:center;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding:7px 0px;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    background:#e1e1e1;
-    border-bottom: 2px solid #01b1ea;
+    border-bottom: 3px solid #01b1ea;
+    box-shadow:2px 2px 3px #ccc;
 }
 
 
@@ -189,8 +190,7 @@ select:focus{
 }
 
 input[type="submit"],
-input[type="button"],
-.button{
+input[type="button"]{
     display:block;
     border-radius:2px;
     width:auto;
@@ -204,27 +204,80 @@ input[type="button"],
 
 }
 
+input[type="submit"]:hover,
+input[type="button"]:hover{
+    background: #3995f8;
+    border:1px solid #11608e;
+}
+
 .button{
+    display:block;
+    min-width: 150px;
+    padding:5px;
     background: #33ae30;
     color:#fff !important;
     text-decoration:none;
+    border-radius: 5px;
 }
 
 .button:hover{
-
+    background: #2ce029;
 }
+
 
 #lateral ul{
     margin:10px 0px;
 }
 
 #lateral ul li{
-    list-style-type:square;
+    list-style-type:none;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
     margin-left: 20px;
 }
+#lateral ul li::before{
+    content: '⚙';
+}
 
+#lateral ul li .close-session{
+    color:white;
+    background: rgb(187, 1, 1);
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#lateral ul li .close-session:hover{
+    background: rgb(255, 16, 16);
+}
+
+#lateral ul .li-close-session{
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+#lateral ul .li-register{
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+
+#lateral ul .li-register .register{
+    color:white;
+    background: rgb(4, 1, 187);
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#lateral ul .li-register .register:hover{
+    background: rgb(6, 2, 240);
+}
+
+#lateral ul .li-register::before,
+#lateral ul .li-close-session::before{
+    content:'';
+}
 
 #central{
     width:74%;
@@ -258,7 +311,8 @@ input[type="button"],
     margin:10px 10px;
     text-align:center;
     padding:15px;
-    box-shadow:1px 1px 3px rgb(224, 224, 224);
+    box-shadow:1px 1px 5px rgb(224, 224, 224);
+    border-radius: 5px;
 }
 
 .product img{
@@ -274,7 +328,8 @@ input[type="button"],
 
 .product p{
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: normal;
+    color:gray;
 }
 
 
@@ -288,7 +343,51 @@ input[type="button"],
 }
 
 
+/* table - categories */
 
+.btn-add-category{
+    min-width: 150px;
+    background: #1fb601;
+    color: white;
+    margin: 10px 0px;
+    padding:7px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-add-category:hover{
+    background: #28ea01;
+}
+
+.table-categories{
+    width:100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.table-categories thead{
+    padding:5px 0px;
+    background: #012430;
+}
+
+.table-categories thead tr th{
+    padding: 3px 0px;
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
+
+.table-categories tbody tr{
+    border-bottom: 1px solid #ccc;
+}
+
+.table-categories tbody tr td{
+    text-align:center;
+    padding:2px 0px;
+}
+
+.table-categories tbody tr td:first-child{
+    font-weight: bold;
+}
 
 
 

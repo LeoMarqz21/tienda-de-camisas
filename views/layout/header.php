@@ -17,30 +17,21 @@
         <header id="header">
             <idv id="logo">
                 <img src="<?=base_url?>assets/images/camiseta.png" alt="Camiseta - Logo" title="Logo" />
-                <a href="index.php">Tienda de camisetas</a>
+                <a href="index.php" class="link">Tienda de camisetas</a>
             </idv>
         </header>
         <!-- menu -->
+        <?php $categorias = Utils::showCAtegories(); ?>
         <nav id="menu">
             <ul>
                 <li>
-                    <a href="#">Inicio</a>
+                    <a href="<?=base_url?>">Inicio</a>
                 </li>
-                <li>
-                    <a href="#">Categorias 1</a>
-                </li>
-                <li>
-                    <a href="#">Categorias 2</a>
-                </li>
-                <li>
-                    <a href="#">Categorias 3</a>
-                </li>
-                <li>
-                    <a href="#">Categorias 4</a>
-                </li>
-                <li>
-                    <a href="#">Categorias 5</a>
-                </li>
+                <?php while($ct = $categorias->fetch_object()) : ?>
+                    <li>
+                        <a href="#"><?=$ct->nombre?></a>
+                    </li>
+                <?php endwhile; ?>
             </ul>
         </nav>
 
