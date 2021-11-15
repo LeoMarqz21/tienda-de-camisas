@@ -31,7 +31,7 @@
        */ 
       public function setId($id)
       {
-            $this->id = $id;
+            $this->id = $this->db->real_escape_string($id);
 
             return $this;
       }
@@ -51,7 +51,7 @@
        */ 
       public function setCategoryId($categoryId)
       {
-            $this->categoryId = $categoryId;
+            $this->categoryId = $this->db->real_escape_string($categoryId);
 
             return $this;
       }
@@ -71,7 +71,7 @@
        */ 
       public function setName($name)
       {
-            $this->name = $name;
+            $this->name = $this->db->real_escape_string($name);
 
             return $this;
       }
@@ -91,7 +91,7 @@
        */ 
       public function setDescription($description)
       {
-            $this->description = $description;
+            $this->description = $this->db->real_escape_string($description);
 
             return $this;
       }
@@ -111,7 +111,7 @@
        */ 
       public function setPrice($price)
       {
-            $this->price = $price;
+            $this->price = $this->db->real_escape_string($price);
 
             return $this;
       }
@@ -131,7 +131,7 @@
        */ 
       public function setStock($stock)
       {
-            $this->stock = $stock;
+            $this->stock = $this->db->real_escape_string($stock);
 
             return $this;
       }
@@ -151,7 +151,7 @@
        */ 
       public function setOffer($offer)
       {
-            $this->offer = $offer;
+            $this->offer = $this->db->real_escape_string($offer);
 
             return $this;
       }
@@ -202,6 +202,17 @@
           $products = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
           return $products;
       }
+
+      public function save(){
+            $result = false;
+            $query = "INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) VALUES ('{$this->getCategoryId()}', '{$this->getName()}', '{$this->getDescription()}', '{$this->getPrice()}', '{$this->getStock()}', 'NULL', 'CURDATE()', '{$this->getImage()}')"; 
+            $save = $this->db->query($query);
+            if($save){
+                  $result = true;
+            }
+            return $result;
+      }
+
   }
 
 ?>

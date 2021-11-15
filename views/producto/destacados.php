@@ -1,37 +1,12 @@
 <h1>Productos destacados</h1>
+
+<?php while($pd = $products->fetch_object()): ?>
+
 <div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
+    <img src="<?= $pd->imagen?>" />
+    <h2><?= $pd->nombre ?></h2>
+    <p>Precio: $<?=$pd->precio?></p>
     <a href="#" class="button">Comprar</a>
 </div>
-<div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
-    <a href="#" class="button">Comprar</a>
-</div>
-<div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
-    <a href="#" class="button">Comprar</a>
-</div>
-<div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
-    <a href="#" class="button">Comprar</a>
-</div>
-<div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
-    <a href="#" class="button">Comprar</a>
-</div>
-<div class="product">
-    <img src="<?=base_url?>assets/images/camiseta.png" />
-    <h2>Camiseta Azul Ancha</h2>
-    <p>Precio: $30</p>
-    <a href="#" class="button">Comprar</a>
-</div>
+
+<?php endwhile; ?>

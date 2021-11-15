@@ -8,7 +8,7 @@
 
 <h1>Gestionar Categorias</h1>
 <a href="<?=base_url?>categoria/crear" class="btn-add-category">Agregar nueva categoria</a>
-<table class="table-categories" >
+<table class="table-gestion" >
     <thead>
         <tr>
             <th>Nº</th>
